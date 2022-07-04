@@ -9,30 +9,25 @@
         <div>
             <input id="btnOpenPopup" type="button" value="Open Popup"/><br/>
         </div>
-        <div style="display: flex; flex-direction: row">
-            <h4>Status:</h4>
-            <p id="payment_status"></p>
-        </div>
-        <div style="display: flex; flex-direction: row">
+        <div style="display: flex; flex-direction: row; align-items: center;">
             <h4>Client Id:</h4>
             <p id="clientId"></p>
         </div>
-        <div style="display: flex; flex-direction: row">
+        <div style="display: flex; flex-direction: row; align-items: center;">
             <h4>Payment Id:</h4>
             <p id="paymentId"></p>
         </div>
-        <div style="display: flex; flex-direction: row">
+        <div style="display: flex; flex-direction: row; align-items: center;">
             <h4>Status MercadoPago:</h4>
             <p id="statusmp"></p>
         </div>
-        <div style="display: flex; flex-direction: row">
+        <div style="display: flex; flex-direction: row; align-items: center;">
             <h4>Status:</h4>
             <p id="detail"></p>
         </div>
     </form>
     <script type="text/javascript">
     var popup;
-    let status = document.querySelector('#payment_status')
     var client = document.querySelector('#clientId')
     var payment = document.querySelector('#paymentId')
     var statusmp = document.querySelector('#statusmp')
@@ -54,12 +49,10 @@
             return
         } else {
             console.log('Es igual')
-            const {data}= event.data
-            status.innerHTML = data.status
-            client.innerHTML = data.client_id;
-            payment.innerHTML = data.payment_id;
-            statusmp.innerHTML = data.status;
-            detail.innerHTML = data.status_detail;
+            client.innerHTML = event.data.client_id;
+            payment.innerHTML = event.data.payment_id;
+            statusmp.innerHTML = event.data.status;
+            detail.innerHTML = event.data.status_detail;
         }
     });
     </script>
