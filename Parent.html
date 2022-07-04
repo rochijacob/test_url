@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+</head>
+<body>
+    <form id="form1">
+        <div>
+            <input id="btnOpenPopup" type="button" value="Open Popup"/><br/>
+        </div>
+        <div style="display: flex; flex-direction: row">
+            <h4>Status:</h4>
+            <p id="payment_status"></p>
+        </div>
+        <div style="display: flex; flex-direction: row">
+            <h4>Client Id:</h4>
+            <p id="clientId"></p>
+        </div>
+        <div style="display: flex; flex-direction: row">
+            <h4>Payment Id:</h4>
+            <p id="paymentId"></p>
+        </div>
+        <div style="display: flex; flex-direction: row">
+            <h4>Status MercadoPago:</h4>
+            <p id="statusmp"></p>
+        </div>
+        <div style="display: flex; flex-direction: row">
+            <h4>Status:</h4>
+            <p id="detail"></p>
+        </div>
+    </form>
+    <script type="text/javascript">
+    var popup;
+    let status = document.querySelector('#payment_status')
+    var client = document.querySelector('#clientId')
+    var payment = document.querySelector('#paymentId')
+    var statusmp = document.querySelector('#statusmp')
+    var detail = document.querySelector('#detail')
+
+
+
+    function openPopup() {
+            popup = window.open("https://main.d3piwr7r9e38tc.amplifyapp.com/paso2/registro-tarjeta-sura", '_blank', 'top=100,left=80,height=800,width=500');
+    }
+    var $openPopupButton = document.querySelector("#btnOpenPopup")
+    $openPopupButton.addEventListener("click", openPopup);
+
+                /* Step 2 : Add message event listener in popup window
+    Open the console of the newly opened window and add this code */
+    window.addEventListener("message", function(event) {
+        if (event.origin !== "https://main.d3piwr7r9e38tc.amplifyapp.com"){
+            console.log('Es distinto')
+            return
+        } else {
+            console.log('Es igual')
+            const {data}= event.data
+            status.innerHTML = data.status
+            client.innerHTML = data.client_id;
+            payment.innerHTML = data.payment_id;
+            statusmp.innerHTML = data.status;
+            detail.innerHTML = data.status_detail;
+        }
+    });
+    </script>
+</body>
+</html>
