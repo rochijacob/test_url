@@ -22,7 +22,7 @@
             <p id="statusmp"></p>
         </div>
         <div style="display: flex; flex-direction: row; align-items: center;">
-            <h4>Status:</h4>
+            <h4>Detail:</h4>
             <p id="detail"></p>
         </div>
     </form>
@@ -36,7 +36,8 @@
 
 
     function openPopup() {
-            popup = window.open("https://main.d3piwr7r9e38tc.amplifyapp.com/paso2/registro-tarjeta-sura", '_blank', 'top=100,left=80,height=800,width=500');
+            popup = window.open("https://localhost:3000/paso2/registro-tarjeta-sura", '_blank', 'top=100,left=80,height=800,width=500');
+            popup.postMessage({'hola': 'hola'} ,'*')
     }
     var $openPopupButton = document.querySelector("#btnOpenPopup")
     $openPopupButton.addEventListener("click", openPopup);
